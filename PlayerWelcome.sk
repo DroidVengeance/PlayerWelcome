@@ -10,14 +10,17 @@ on script load:
 	if folder "plugins/PlayerWelcome/" doesn't exists:
 		create folder "plugins/PlayerWelcome/"
 	if file "plugins/PlayerWelcome/config.yml" doesn't exists:
-		create file "plugins/PlayerWelcome/config.yml"
+		download from "https://bit.ly/2xl7sgT" to "plugins/PlayerWelcome/config.yml"
+		send "[PlayerWelcome] Config Generated..." to the console
 	if file "plugins/PlayerWelcome/players.yml" doesn't exists:
-		create file "plugins/PlayerWelcome/players.yml"
+		download from "https://bit.ly/2xkFJvX" to "plugins/PlayerWelcome/players.yml"
+		send "[PlayerWelcome] Player List Generated..." to the console
 		stop
 
 
 on first join:
 	wait 5 ticks
-	broadcast "&b▂▃▅▇Welcome %player% to %{serverName}%!▇▅▃▂"
-	set "%player's UUID%" to "%name of player%" in yaml file "plugins/PlayerWelcome/players.yml"
+	set {_serverName} to skutil yaml value "serverName" from file "/plugins/PlayerWelcome/config.yml"
+	broadcast "&b▂▃▅▇Welcome %player% to %{_serverName}%!▇▅▃▂"
+	set skutil yaml value "%player%" from file "plugins/PlayerWelcome/players.yml" to "%UUID of player%"
 	stop
