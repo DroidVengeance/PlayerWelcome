@@ -1,0 +1,23 @@
+#__________.__                             __      __       .__                               
+#\______   \  | _____  ___.__. ___________/  \    /  \ ____ |  |   ____  ____   _____   ____  
+# |     ___/  | \__  \<   |  |/ __ \_  __ \   \/\/   // __ \|  | _/ ___\/  _ \ /     \_/ __ \ 
+# |    |   |  |__/ __ \\___  \  ___/|  | \/\        /\  ___/|  |_\  \__(  <_> )  Y Y  \  ___/ 
+# |____|   |____(____  / ____|\___  >__|    \__/\  /  \___  >____/\___  >____/|__|_|  /\___  >
+#                    \/\/         \/             \/       \/          \/            \/     \/ 
+#By: DroidVengeance
+
+on script load:
+	if folder "plugins/PlahyerWelcome/" doesn't exists:
+		create folder "plugins/PlayerWelcome/"
+	if file "plugins/PlayerWelcome/config.yml" doesn't exists:
+		create file "plugins/PlayerWelcome/config.yml"
+	if file "plugins/PlayerWelcome/players.yml" doesn't exists:
+		create file "plugins/PlayerWelcome/players.yml"
+		stop
+
+
+on first join:
+	wait 5 ticks
+	broadcast "&b▂▃▅▇Welcome %player% to %{serverName}%!▇▅▃▂"
+	set "%player's UUID%" to "%name of player%" in yaml file "plugins/PlayerWelcome/players.yml"
+	stop
