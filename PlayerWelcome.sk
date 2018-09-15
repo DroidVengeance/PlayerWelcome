@@ -7,7 +7,7 @@
 #By: DroidVengeance
 
 on script load:
-	if folder "plugins/PlahyerWelcome/" doesn't exists:
+	if folder "plugins/PlayerWelcome/" doesn't exists:
 		create folder "plugins/PlayerWelcome/"
 	if file "plugins/PlayerWelcome/config.yml" doesn't exists:
 		create file "plugins/PlayerWelcome/config.yml"
