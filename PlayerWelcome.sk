@@ -22,5 +22,6 @@ on first join:
 	wait 5 ticks
 	set {_serverName} to skutil yaml value "serverName" from file "/plugins/PlayerWelcome/config.yml"
 	broadcast "&b▂▃▅▇Welcome %player% to %{_serverName}%!▇▅▃▂"
-	set skutil yaml value "%player%" from file "plugins/PlayerWelcome/players.yml" to "%UUID of player%"
+	set skutil yaml value "%player%" from file "plugins/PlayerWelcome/players.yml" to "%UUID of player% joined on %now% from %player's IP%"
 	stop
+
