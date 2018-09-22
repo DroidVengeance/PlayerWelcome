@@ -25,3 +25,11 @@ on first join:
 	set skutil yaml value "%player%" from file "plugins/PlayerWelcome/players.yml" to "%UUID of player% joined on %now% from %player's IP%"
 	stop
 
+command /playerwelcome [<player>]:
+	permission: playerwelcome.admin
+	aliases: /pw, /pwelcome
+	trigger:
+		set {_serverName} to skutil yaml value "serverName" from file "/plugins/PlayerWelcome/config.yml"
+		broadcast "&b▂▃▅▇Welcome %arg-1% to %{_serverName}%!▇▅▃▂"
+		set skutil yaml value "%arg-1%" from file "plugins/PlayerWelcome/players.yml" to "%UUID of arg-1% joined on %now% from %arg-1's IP%"
+		stop
