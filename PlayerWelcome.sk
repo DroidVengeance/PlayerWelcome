@@ -5,6 +5,8 @@
 # |____|   |____(____  / ____|\___  >__|    \__/\  /  \___  >____/\___  >____/|__|_|  /\___  >
 #                    \/\/         \/             \/       \/          \/            \/     \/ 
 #By: DroidVengeance
+import:
+	org.bukkit.event.player.PlayerJoinEvent
 
 on script load:
 	if folder "plugins/PlayerWelcome/" doesn't exists:
@@ -21,8 +23,8 @@ on script load:
 on first join:
 	wait 5 ticks
 	set {_serverName} to skutil yaml value "serverName" from file "/plugins/PlayerWelcome/config.yml"
-	broadcast "&b▂▃▅▇Welcome %player% to %{_serverName}%!▇▅▃▂"
-	set skutil yaml value "%player%" from file "plugins/PlayerWelcome/players.yml" to "%UUID of player% joined on %now% from %player's IP%"
+	broadcast "&b▂▃▅▇Welcome %event.getPlayer()% to %{_serverName}%!▇▅▃▂"
+	set skutil yaml value "%event.getPlayer()%" from file "plugins/PlayerWelcome/players.yml" to "%UUID of event.getPlayer()% joined on %now% from %event.getPlayer()'s IP%"
 	stop
 
 command /playerwelcome [<player>]:
